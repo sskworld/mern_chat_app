@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
+const cors = require('cors')
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const config = require("./config/key");
+
+app.use(cors());
 
 const mongoose = require("mongoose");
 const connect = mongoose.connect(config.mongoURI, {
